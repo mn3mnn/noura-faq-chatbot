@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet" href="style/custom.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+</head>
+
+<body class="bg-gray-200 h-screen">
+    <img src="img/top_BG@2x.55bc8c3b3395293b8af9.png" alt=""
+    class="absolute flex align-middle justify-center flex-col w-screen h-2/4 z--1">
+    <div class="flex flex-col h-screen justify-end">
+        <div class="flex flex-col w-8/12 h-5/6 mx-auto rounded-t-3xl shadow-lg overflow-hidden">
+            <!-- Header -->
+            <div class="py-2 px-4 bg-white flex items-center">
+                <img src="img/twasaul-chatbot-avatar.png" alt="Chatbot" class="h-12 w-12 rounded-full">
+                <div class="ml-2">
+                    <h1 class="font-bold">ChatBot</h1>
+                    <p class="text-sm text-green-500">Online</p>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="bg-gradient flex-1 p-4 overflow-y-auto" id="chat-body">
+                <div>
+                    <div id="dynamicLabel" class="text-sm text-gray-700 font-bold mb-3"></div>
+                    <span id="welcomeMessage" class="max-w-80 p-2 bg-white rounded-b-2xl">Welcome! I'm here to help.</span>
+                    <div class="mt-4">
+                        <button id="englishBtn" onclick="setLanguage('en')"
+                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
+                        </button>
+                        <button id="arabicBtn" onclick="setLanguage('ar')"
+                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
+                        </button>
+                    </div>
+                </div>
+                <!-- Chat messages will go here -->
+                <div id="messages-container"></div>
+            </div>
+
+            <!-- Question List -->
+            <div class="relative bg-gray-400 pb-2 px-4 overflow-y-auto h-36" id="questionListContainer">
+                <div class="flex justify-center cursor-pointer text-xl" id="toggleButton">▲</div>
+                <ul id="questionList" class="space-y-4 flex flex-col">
+                    <!-- Questions will be injected here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
