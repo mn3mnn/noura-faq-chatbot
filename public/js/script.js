@@ -13,7 +13,7 @@ const questions = {
         { id: 9, q: "Other Inquiries", a: "For other inquiries or questions, please refer to the following email/phone number: <a href=\"https://Info@pnu.edu.sa\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">Info@pnu.edu.sa</a>  (+966118220000)" }
     ],
     ar: [
-        { id: 1, q: "ماذا أفعل إذا تم فقدان بطاقة الهوية الذكية الخاصة بي أو سرقتها؟", a: "إذا فقدت بطاقة الهوية الذكية أو سرقت، سيعتبر أي محاولة للوصول إليها ضمن النظام غير مصرح بها حتى يتم تقديم تقرير. للمساعدة، يرجى الاتصال بنا على الفور على 011 822 0000." },
+        { id: 1, q: "ماذا أفعل إذا تم فقدان بطاقة الهوية الذكية الخاصة بي أو سرقتها؟", a: "إذا فقدت بطاقة الهوية الذكية أو سرقت، سيعتبر أي محاولة للوصول إليها ضمن النظام غير مصرح بها حتى يتم تقديم تقرير. للمساعدة، يرجى الاتصال بنا على الفور على 0000 822 011 ." },
         { id: 2, q: "كيف أقوم بتحديث المعلومات الشخصية المرتبطة ببطاقة الهوية الذكية؟", a: "إذا أردت تحديث معلوماتك الشخصية، يرجى التوجه الى إدارة شؤون الطالبات." },
         { id: 3, q: "ماذا يجب أن أفعل إذا لم تعمل بطاقة الهوية الذكية بشكل صحيح؟", a: "يرجى الاتصال (011 822 0000) لإصلاح بطاقتك أو لتزويدك بتصريح مؤقت." },
         { id: 4, q: "كيف أتحقق من حضوري باستخدام بطاقة الهوية الذكية؟", a: "لوحة التحكم." },
@@ -110,10 +110,9 @@ function displayAnswer(id ,question, answer) {
 
 function renderMessages() {
     const messagesContainer = document.getElementById('messages-container');
-    console.log(chatHistory);
-    messagesContainer.innerHTML = '';
-    console.log(chatHistory);
+    const langDirection = localStorage.getItem('chatLang') === 'ar' ? 'rtl' : 'ltr';
 
+    messagesContainer.innerHTML = '';
     chatHistory.forEach(message => {
         if (localStorage.getItem('chatLang') === 'ar') {
             message.question = questions.ar.find(q => q.id === message.id).q;
@@ -125,11 +124,11 @@ function renderMessages() {
         messagesContainer.innerHTML += `
             <div class="flex flex-col items-end">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.customer}</div>
-                <div class="max-w-xl p-2 mt-1 bg-white rounded-l-2xl rounded-br-2xl rounded-tr-sm">${message.question}</div>
+                <div class="max-w-2xl p-2 mt-1 bg-white rounded-l-2xl rounded-br-2xl rounded-tr-sm" style="direction: ${langDirection};">${message.question}</div>
             </div>
             <div class="flex flex-col items-start">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.chatbot}</div>
-                <div class="max-w-xl p-2 mt-1 bg-white rounded-r-2xl rounded-bl-2xl rounded-tl-sm">${message.answer}</div>
+                <div class="max-w-2xl p-2 mt-1 bg-white rounded-r-2xl rounded-bl-2xl rounded-tl-sm" style="direction: ${langDirection};">${message.answer}</div>
             </div>
         `;
     });
