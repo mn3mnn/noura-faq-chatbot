@@ -9,7 +9,8 @@ const questions = {
         { id: 5, q: "Is there available parking?", a: "Control panel." },
         { id: 6, q: "When will the next metro arrive?", a: "Control panel." },
         { id: 7, q: "How can I borrow a book from the library?", a: "To borrow a book, you must register for the requested book and then scan your card to complete the registration." },
-        { id: 8, q: "How can a visitor obtain permission to access university facilities?", a: "To obtain a visitor's permit to access Princess Nourah University, please contact Tawasul Nourah through the provided link. <a href=\"https://tawasulnourah.pnu.edu.sa/\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">https://tawasulnourah.pnu.edu.sa/</a>" }
+        { id: 8, q: "How can a visitor obtain permission to access university facilities?", a: "To obtain a visitor's permit to access Princess Nourah University, please contact Tawasul Nourah through the provided link. <a href=\"https://tawasulnourah.pnu.edu.sa/\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">tawasulnourah.pnu.edu.sa/</a>" },
+        { id: 9, q: "Other Inquiries", a: "For other inquiries or questions, please refer to the following email/phone number: <a href=\"https://Info@pnu.edu.sa\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">Info@pnu.edu.sa</a>  (+966118220000)" }
     ],
     ar: [
         { id: 1, q: "ماذا أفعل إذا تم فقدان بطاقة الهوية الذكية الخاصة بي أو سرقتها؟", a: "إذا فقدت بطاقة الهوية الذكية أو سرقت، سيعتبر أي محاولة للوصول إليها ضمن النظام غير مصرح بها حتى يتم تقديم تقرير. للمساعدة، يرجى الاتصال بنا على الفور على 011 822 0000." },
@@ -19,9 +20,11 @@ const questions = {
         { id: 5, q: "هل يوجد مكان لوقوف السيارات متاح؟", a: "لوحة التحكم." },
         { id: 6, q: "متى ستصل أقرب مترو؟", a: "لوحة التحكم." },
         { id: 7, q: "كيف يمكنني استعارة كتاب من المكتبة؟", a: "لاستعارة كتاب، يجب عليك التسجيل للكتاب المطلوب ثم مسح بطاقتك لإكمال التسجيل." },
-        { id: 8, q: "كيف يمكن للزائر الحصول على إذن للوصول إلى مرافق الجامعة؟", a: "للحصول على تصريح زائر للوصول إلى جامعة الأميرة نورة، يرجى الاتصال بتواصل نورة من خلال الرابط المقدم. <a href=\"https://tawasulnourah.pnu.edu.sa/\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">https://tawasulnourah.pnu.edu.sa/</a>" }
+        { id: 8, q: "كيف يمكن للزائر الحصول على إذن للوصول إلى مرافق الجامعة؟", a: "للحصول على تصريح زائر للوصول إلى جامعة الأميرة نورة، يرجى الاتصال بتواصل نورة من خلال الرابط المقدم. <a href=\"https://tawasulnourah.pnu.edu.sa/\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">tawasulnourah.pnu.edu.sa/</a>" },
+        { id: 9, q: "أخرى", a: "إذا كان لديك أي استفسارات أو أسئلة أخرى الرجوع إلى البريد الإلكتروني/الرقم التالي: <a href=\"https://Info@pnu.edu.sa\" target=\"_blank\" class=\"text-blue-500 hover:text-blue-700 underline\">Info@pnu.edu.sa</a>   (+966118220000)"}
     ],
 };
+
 
 
 const translations = {
