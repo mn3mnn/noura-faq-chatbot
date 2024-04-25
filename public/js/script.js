@@ -2,16 +2,24 @@ console.log('Script loaded');
 
 const questions = {
     en: [
-        { id: 1, q: "What is your return policy?", a: "You can return any item within 30 days of purchase." },
-        { id: 2, q: "How to track my order?", a: "You can track your order through our tracking page." },
-        { id: 3, q: "How to contact customer service?", a: "You can contact customer service through our contact page."},
-        { id: 4, q: "How to change my password?", a: "You can change your password through your account settings."}
+        { id: 1, q: "What should I do if my smart ID card is lost or stolen?", a: "If your smart ID card is lost or stolen, any attempt to access it within the system will be unauthorized until a report is made. For assistance, please contact us immediately at 011 822 0000." },
+        { id: 2, q: "How do I update the personal information associated with my smart ID card?", a: "If you want to update your personal information, please head to the Student Affairs Administration." },
+        { id: 3, q: "What should I do if my smart ID card is not working properly?", a: "Please call (011 822 0000) to repair your card or to be provided with a temporary permit." },
+        { id: 4, q: "How do I verify my attendance using the smart ID card?", a: "Control panel." },
+        { id: 5, q: "Is there available parking?", a: "Control panel." },
+        { id: 6, q: "When will the next metro arrive?", a: "Control panel." },
+        { id: 7, q: "How can I borrow a book from the library?", a: "To borrow a book, you must register for the requested book and then scan your card to complete the registration." },
+        { id: 8, q: "How can a visitor obtain permission to access university facilities?", a: "To obtain a visitor's permit to access Princess Nourah University, please contact Tawasul Nourah through the provided link. (https://tawasulnourah.pnu.edu.sa/)" }
     ],
     ar: [
-        { id: 1, q: "ما هي سياسة الإرجاع؟", a: "يمكنك إرجاع أي منتج خلال 30 يومًا من الشراء" },
-        { id: 2, q: "كيف يمكنني تتبع طلبي؟", a: "يمكنك تتبع طلبك من خلال صفحة التتبع الخاصة بنا" },
-        { id: 3, q: "كيف يمكنني الاتصال بخدمة العملاء؟", a: "يمكنك الاتصال بخدمة العملاء من خلال صفحة الاتصال بنا" },
-        { id: 4, q: "كيف يمكنني تغيير كلمة المرور؟", a: "يمكنك تغيير كلمة المرور من خلال إعدادات الحساب الخاصة بك" }
+        { id: 1, q: "ماذا أفعل إذا تم فقدان بطاقة الهوية الذكية الخاصة بي أو سرقتها؟", a: "إذا فقدت بطاقة الهوية الذكية أو سرقت، سيعتبر أي محاولة للوصول إليها ضمن النظام غير مصرح بها حتى يتم تقديم تقرير. للمساعدة، يرجى الاتصال بنا على الفور على 011 822 0000." },
+        { id: 2, q: "كيف أقوم بتحديث المعلومات الشخصية المرتبطة ببطاقة الهوية الذكية؟", a: "إذا أردت تحديث معلوماتك الشخصية، يرجى التوجه الى إدارة شؤون الطالبات." },
+        { id: 3, q: "ماذا يجب أن أفعل إذا لم تعمل بطاقة الهوية الذكية بشكل صحيح؟", a: "يرجى الاتصال (011 822 0000) لإصلاح بطاقتك أو لتزويدك بتصريح مؤقت." },
+        { id: 4, q: "كيف أتحقق من حضوري باستخدام بطاقة الهوية الذكية؟", a: "لوحة التحكم." },
+        { id: 5, q: "هل يوجد مكان لوقوف السيارات متاح؟", a: "لوحة التحكم." },
+        { id: 6, q: "متى ستصل أقرب مترو؟", a: "لوحة التحكم." },
+        { id: 7, q: "كيف يمكنني استعارة كتاب من المكتبة؟", a: "لاستعارة كتاب، يجب عليك التسجيل للكتاب المطلوب ثم مسح بطاقتك لإكمال التسجيل." },
+        { id: 8, q: "كيف يمكن للزائر الحصول على إذن للوصول إلى مرافق الجامعة؟", a: "للحصول على تصريح زائر للوصول إلى جامعة الأميرة نورة، يرجى الاتصال بتواصل نورة من خلال الرابط المقدم. (https://tawasulnourah.pnu.edu.sa/)" }
     ]
 };
 
@@ -20,12 +28,12 @@ const translations = {
     en: {
         customer: "Customer",
         chatbot: "ChatBot",
-        welcomeMessage: "Welcome! I'm here to help.",
+        welcomeMessage: "Welcome to (Elevate PNU) chatbot! Please select your preferred language to start",
     },
     ar: {
         customer: "العميل",
         chatbot: "الروبوت",
-        welcomeMessage: "أهلاً! أنا هنا لمساعدتك.",
+        welcomeMessage: "مرحبًا بك في برنامج الدردشة الآلي (Elevate PNU)! الرجاء تحديد لغتك المفضلة للبدء",
     }
 };
 
@@ -112,11 +120,11 @@ function renderMessages() {
         messagesContainer.innerHTML += `
             <div class="flex flex-col items-end">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.customer}</div>
-                <div class="max-w-80 p-2 mt-1 bg-white rounded-l-2xl rounded-br-2xl rounded-tr-sm">${message.question}</div>
+                <div class="max-w-xl p-2 mt-1 bg-white rounded-l-2xl rounded-br-2xl rounded-tr-sm">${message.question}</div>
             </div>
             <div class="flex flex-col items-start">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.chatbot}</div>
-                <div class="max-w-80 p-2 mt-1 bg-white rounded-r-2xl rounded-bl-2xl rounded-tl-sm">${message.answer}</div>
+                <div class="max-w-xl p-2 mt-1 bg-white rounded-r-2xl rounded-bl-2xl rounded-tl-sm">${message.answer}</div>
             </div>
         `;
     });
@@ -130,11 +138,11 @@ window.onload = () => {
 
 document.getElementById('toggleButton').addEventListener('click', function() {
     const questionListContainer = document.getElementById('questionListContainer');
-    if (questionListContainer.style.height === '144px') {
-        questionListContainer.style.height = '288px';
+    if (questionListContainer.style.height === '9rem') {
+        questionListContainer.style.height = '18rem';
         this.textContent = '▼';
     } else {
-        questionListContainer.style.height = '144px';
+        questionListContainer.style.height = '9rem';
         this.textContent = '▲';
     }
 });

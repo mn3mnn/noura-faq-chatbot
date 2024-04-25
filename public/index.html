@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <link rel="stylesheet" href="style/output.css">
-    <link rel="stylesheet" href="style/custom.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+    <style>
+        .overflow-y-auto {
+            scrollbar-color: rgb(12, 74, 110) #f8f9fa;
+        }
+
+        .z--1 {
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-200 h-screen">
-    <img src="img/top_BG@2x.55bc8c3b3395293b8af9.png" alt=""
-    class="absolute flex align-middle justify-center flex-col w-screen h-2/4 z--1">
+    <img src="img/top_BG.png" alt="" class="absolute flex align-middle justify-center flex-col w-screen h-2/4 z--1">
     <div class="flex flex-col h-screen justify-end">
         <div class="flex flex-col w-8/12 h-5/6 mx-auto rounded-t-3xl shadow-lg overflow-hidden">
             <!-- Header -->
@@ -25,10 +31,11 @@
             </div>
 
             <!-- Messages -->
-            <div class="bg-gradient flex-1 p-4 overflow-y-auto" id="chat-body">
+            <div class="bg-gradient-linear flex-1 p-4 overflow-y-auto" id="chat-body">
                 <div>
                     <div id="dynamicLabel" class="text-sm text-gray-700 font-bold mb-3"></div>
-                    <span id="welcomeMessage" class="max-w-80 p-2 bg-white rounded-b-2xl">Welcome! I'm here to help.</span>
+                    <span id="welcomeMessage" class="max-w-xl p-2 bg-white rounded-b-2xl">Welcome to (Elevate PNU)
+                        chatbot! Please select your preferred language to start</span>
                     <div class="mt-4">
                         <button id="englishBtn" onclick="setLanguage('en')"
                             class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
@@ -43,7 +50,8 @@
             </div>
 
             <!-- Question List -->
-            <div class="relative bg-gray-400 pb-2 px-4 overflow-y-auto h-36" id="questionListContainer">
+            <div class="relative bg-gray-400 pb-2 px-4 overflow-y-auto transition-height duration-300 ease"
+                id="questionListContainer" style="height: 9rem;">
                 <div class="flex justify-center cursor-pointer text-xl" id="toggleButton">▲</div>
                 <ul id="questionList" class="space-y-4 flex flex-col">
                     <!-- Questions will be injected here -->
