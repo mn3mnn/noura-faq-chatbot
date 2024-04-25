@@ -20,7 +20,7 @@
 <body class="bg-gray-200 h-screen">
     <img src="img/top_BG.png" alt="" class="absolute flex align-middle justify-center flex-col w-screen h-2/4 z--1">
     <div class="flex flex-col h-screen justify-end">
-        <div class="flex flex-col w-8/12 h-5/6 mx-auto rounded-t-3xl shadow-lg overflow-hidden">
+        <div class="flex flex-col lg:w-8/12 md:w-10/12 h-5/6 mx-auto rounded-t-3xl shadow-lg overflow-hidden">
             <!-- Header -->
             <div class="py-2 px-4 bg-white flex items-center">
                 <img src="img/twasaul-chatbot-avatar.png" alt="Chatbot" class="h-12 w-12 rounded-full">
@@ -33,15 +33,15 @@
             <!-- Messages -->
             <div class="bg-gradient-linear flex-1 p-4 overflow-y-auto" id="chat-body">
                 <div>
-                    <div id="dynamicLabel" class="text-sm text-gray-700 font-bold mb-3"></div>
-                    <span id="welcomeMessage" class="max-w-xl p-2 bg-white rounded-b-2xl">Welcome to (Elevate PNU)
-                        chatbot! Please select your preferred language to start</span>
-                    <div class="mt-4">
+                    <div id="dynamicLabel" class="text-sm text-gray-700 font-bold mb-1"></div>
+                    <p id="welcomeMessage" class="max-w-2xl p-2 bg-white rounded-b-2xl">Welcome to (Elevate PNU)
+                        chatbot! Please select your preferred language to start</p>
+                    <div class="mt-2">
                         <button id="englishBtn" onclick="setLanguage('en')"
-                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
+                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none">
                         </button>
                         <button id="arabicBtn" onclick="setLanguage('ar')"
-                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
+                            class="text-xs bg-sky-900 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none">
                         </button>
                     </div>
                 </div>
