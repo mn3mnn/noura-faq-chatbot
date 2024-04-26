@@ -65,7 +65,7 @@ function updateUIForLanguage(lang) {
         dynamicLabel.innerText = translations.ar.chatbot;
         welcomeMessage.classList.add('rounded-tl-2xl', 'rounded-tr-sm');
         welcomeMessage.classList.add('ms-auto');
-        englishBtn.innerText = "الإنجليزية";
+        englishBtn.innerText = "English";
         arabicBtn.innerText = "العربية";
         currentLabels = translations.ar;
     } else {
