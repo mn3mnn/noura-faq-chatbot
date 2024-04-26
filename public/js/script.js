@@ -1,5 +1,3 @@
-console.log('Script loaded');
-
 const questions = {
     en: [
         { id: 1, q: "What should I do if my smart ID card is lost or stolen?", a: "If your smart ID card is lost or stolen, any attempt to access it within the system will be unauthorized until a report is made. For assistance, please contact us immediately at 011 822 0000." },
@@ -25,11 +23,9 @@ const questions = {
     ],
 };
 
-
-
 const translations = {
     en: {
-        customer: "Customer",
+        customer: "PNU community",
         chatbot: "ChatBot",
         welcomeMessage: "Welcome to (Elevate PNU) chatbot! Please select your preferred language to start",
     },
@@ -80,13 +76,12 @@ function updateUIForLanguage(lang) {
         welcomeMessage.classList.add('rounded-tr-2xl', 'rounded-tl-sm');
         welcomeMessage.classList.add('me-auto');
         englishBtn.innerText = "English";
-        arabicBtn.innerText = "Arabic";
+        arabicBtn.innerText = "العربية";
         currentLabels = translations.en;
     }
 
     renderMessages();
 }
-
 
 function displayQuestions(lang) {
     const list = document.getElementById('questionList');
@@ -94,21 +89,28 @@ function displayQuestions(lang) {
     questions[lang].forEach(question => {
         const item = document.createElement('li');
         item.innerText = question.q;
-        item.className = "cursor-pointer p-2 rounded border-2 border-primary text-black hover:bg-primary hover:text-white inline-block rounded-2xl";
+        item.className = "cursor-pointer p-2 rounded border-2 border-sky-900 text-black hover:bg-sky-900 hover:text-white inline-block rounded-2xl mt-2 text-sm";
         item.onclick = () => {    
-            displayAnswer(question.id, question.q, question.a);
+            displayAnswer(question.id, question.q, question.a, lang);
         }
         list.appendChild(item);
     });
 }
 
-
-function displayAnswer(id ,question, answer) {
+function displayAnswer(id ,question, answer, lang) {
     chatHistory.push({ id, question, answer });
-    renderMessages();
+    renderMessages(lang);
 }
 
-function renderMessages() {
+function scrollToBottom() {
+    var messagesContainer = document.getElementById('messages-container');
+    var bottomElement = messagesContainer.lastElementChild;
+    if (bottomElement) {
+        bottomElement.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+}
+
+function renderMessages(lang) {
     const messagesContainer = document.getElementById('messages-container');
     const langDirection = localStorage.getItem('chatLang') === 'ar' ? 'rtl' : 'ltr';
 
@@ -132,21 +134,10 @@ function renderMessages() {
             </div>
         `;
     });
+    scrollToBottom();
 }
-
 
 window.onload = () => {
     const lang = localStorage.getItem('chatLang') || 'en';
     setLanguage(lang);
 };
-
-document.getElementById('toggleButton').addEventListener('click', function() {
-    const questionListContainer = document.getElementById('questionListContainer');
-    if (questionListContainer.style.height === '9rem') {
-        questionListContainer.style.height = '18rem';
-        this.textContent = '▼';
-    } else {
-        questionListContainer.style.height = '9rem';
-        this.textContent = '▲';
-    }
-});

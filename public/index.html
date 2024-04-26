@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,6 @@
         }
     </style>
 </head>
-
 <body class="bg-gray-200 h-screen">
     <img src="img/top_BG.png" alt="" class="absolute flex align-middle justify-center flex-col w-screen h-2/4 z--1">
     <div class="flex flex-col h-screen justify-end">
@@ -29,7 +27,6 @@
                     <p class="text-sm text-green-500">Online</p>
                 </div>
             </div>
-
             <!-- Messages -->
             <div class="bg-gradient-linear flex-1 p-4 overflow-y-auto" id="chat-body">
                 <div>
@@ -45,22 +42,15 @@
                         </button>
                     </div>
                 </div>
+                <!-- Question List -->
+                <ul id="questionList" class="flex flex-col">
+                    <!-- Questions will be injected here -->
+                </ul>
                 <!-- Chat messages will go here -->
                 <div id="messages-container"></div>
             </div>
-
-            <!-- Question List -->
-            <div class="relative bg-gray-400 pb-2 px-4 overflow-y-auto transition-height duration-300 ease"
-                id="questionListContainer" style="height: 9rem;">
-                <div class="flex justify-center text-sky-900 font-bold cursor-pointer text-xl" id="toggleButton">▲</div>
-                <ul id="questionList" class="space-y-4 flex flex-col">
-                    <!-- Questions will be injected here -->
-                </ul>
-            </div>
         </div>
     </div>
-
     <script src="js/script.js"></script>
 </body>
-
 </html>
