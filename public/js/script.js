@@ -48,35 +48,20 @@ let currentLabels = translations.en;
 
 function updateUIForLanguage(lang) {
     const chatBody = document.getElementById('chat-body');
-    const questionList = document.getElementById('questionList');
     const welcomeMessage = document.getElementById('welcomeMessage');
     const dynamicLabel = document.getElementById('dynamicLabel');
-    const englishBtn = document.getElementById('englishBtn');
-    const arabicBtn = document.getElementById('arabicBtn');
 
     chatBody.classList.remove('text-right', 'text-left');
-    questionList.classList.remove('items-end', 'items-start');
-    welcomeMessage.classList.remove('rounded-tr-2xl', 'rounded-tl-sm', 'rounded-tl-2xl', 'rounded-tr-sm', 'me-auto', 'ms-auto');
 
     if (lang === 'ar') {
         chatBody.classList.add('text-right');
-        questionList.classList.add('items-end');
         welcomeMessage.innerText = translations.ar.welcomeMessage;
         dynamicLabel.innerText = translations.ar.chatbot;
-        welcomeMessage.classList.add('rounded-tl-2xl', 'rounded-tr-sm');
-        welcomeMessage.classList.add('ms-auto');
-        englishBtn.innerText = "English";
-        arabicBtn.innerText = "العربية";
         currentLabels = translations.ar;
     } else {
         chatBody.classList.add('text-left');
-        questionList.classList.add('items-start');
         welcomeMessage.innerText = translations.en.welcomeMessage;
         dynamicLabel.innerText = translations.en.chatbot;
-        welcomeMessage.classList.add('rounded-tr-2xl', 'rounded-tl-sm');
-        welcomeMessage.classList.add('me-auto');
-        englishBtn.innerText = "English";
-        arabicBtn.innerText = "العربية";
         currentLabels = translations.en;
     }
 
@@ -91,15 +76,15 @@ function displayQuestions(lang) {
         item.innerText = question.q;
         item.className = "cursor-pointer p-2 rounded border-2 border-sky-900 text-black hover:bg-sky-900 hover:text-white inline-block rounded-2xl mt-2 text-sm";
         item.onclick = () => {    
-            displayAnswer(question.id, question.q, question.a, lang);
+            displayAnswer(question.id, question.q, question.a);
         }
         list.appendChild(item);
     });
 }
 
-function displayAnswer(id ,question, answer, lang) {
+function displayAnswer(id ,question, answer) {
     chatHistory.push({ id, question, answer });
-    renderMessages(lang);
+    renderMessages();
 }
 
 function scrollToBottom() {
@@ -110,13 +95,14 @@ function scrollToBottom() {
     }
 }
 
-function renderMessages(lang) {
+function renderMessages() {
     const messagesContainer = document.getElementById('messages-container');
-    const langDirection = localStorage.getItem('chatLang') === 'ar' ? 'rtl' : 'ltr';
+    const lang = localStorage.getItem('chatLang') || 'en';
+    const langDirection = lang === 'ar' ? 'rtl' : 'ltr';
 
     messagesContainer.innerHTML = '';
     chatHistory.forEach(message => {
-        if (localStorage.getItem('chatLang') === 'ar') {
+        if (lang === 'ar') {
             message.question = questions.ar.find(q => q.id === message.id).q;
             message.answer = questions.ar.find(q => q.id === message.id).a;
         } else {
@@ -126,11 +112,11 @@ function renderMessages(lang) {
         messagesContainer.innerHTML += `
             <div class="flex flex-col items-end">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.customer}</div>
-                <div class="max-w-2xl p-2 mt-1 bg-white rounded-l-2xl rounded-br-2xl rounded-tr-sm" style="direction: ${langDirection};">${message.question}</div>
+                <div class="max-w-2xl p-2 mt-1 bg-whitee-200 rounded-l-2xl rounded-br-2xl rounded-tr-sm" style="direction: ${langDirection};">${message.question}</div>
             </div>
             <div class="flex flex-col items-start">
                 <div class="text-sm text-gray-700 font-bold">${currentLabels.chatbot}</div>
-                <div class="max-w-2xl p-2 mt-1 bg-white rounded-r-2xl rounded-bl-2xl rounded-tl-sm" style="direction: ${langDirection};">${message.answer}</div>
+                <div class="max-w-2xl p-2 mt-1 bg-whitee-200 rounded-r-2xl rounded-bl-2xl rounded-tl-sm" style="direction: ${langDirection};">${message.answer}</div>
             </div>
         `;
     });
